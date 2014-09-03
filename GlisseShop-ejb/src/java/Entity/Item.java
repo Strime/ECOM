@@ -4,18 +4,24 @@
  * and open the template in the editor.
  */
 
-package test;
+package Entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -37,6 +43,11 @@ public class Item implements Serializable {
     private Integer idItem;
     @Column(name = "Count")
     private Integer count;
+    @JoinColumn(name = "Order_idOrder", referencedColumnName = "idOrder")
+    @ManyToOne(optional = false)
+    private Order1 orderidOrder;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "itemidItem")
+    private Collection<Reference> referenceCollection;
 
     public Item() {
     }
@@ -61,6 +72,23 @@ public class Item implements Serializable {
         this.count = count;
     }
 
+    public Order1 getOrderidOrder() {
+        return orderidOrder;
+    }
+
+    public void setOrderidOrder(Order1 orderidOrder) {
+        this.orderidOrder = orderidOrder;
+    }
+
+    @XmlTransient
+    public Collection<Reference> getReferenceCollection() {
+        return referenceCollection;
+    }
+
+    public void setReferenceCollection(Collection<Reference> referenceCollection) {
+        this.referenceCollection = referenceCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -83,7 +111,7 @@ public class Item implements Serializable {
 
     @Override
     public String toString() {
-        return "test.Item[ idItem=" + idItem + " ]";
+        return "Entity.Item[ idItem=" + idItem + " ]";
     }
     
 }

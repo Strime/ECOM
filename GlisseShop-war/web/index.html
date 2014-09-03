@@ -12,8 +12,17 @@ and open the template in the editor.
         <script src="Scripts/angular/angular.js" type="text/javascript"></script>
         <script src="Scripts/angular/angular-route.js" type="text/javascript"></script>
         <script src="Scripts/angular/angular-resource.js" type="text/javascript"></script>
+    
+        <script src="Scripts/test/services.js" type="text/javascript"></script>
+        <script src="Scripts/test/controllers.js" type="text/javascript"></script>
+        <script src="Scripts/test/glisseAngular.js" type="text/javascript"></script>
+
     </head>
+    
     <body>
-        <div>TODO write content</div>
+        <div ng-app="glisseAngular" ng-controller="TestController">
+            <li ng-repeat="item in movies">{{item.title}}</li>
+        </div>
+        
     </body>
 </html>

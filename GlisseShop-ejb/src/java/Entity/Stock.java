@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package test;
+package Entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -39,6 +39,9 @@ public class Stock implements Serializable {
     @JoinColumn(name = "Supplier_idSupplier", referencedColumnName = "idSupplier")
     @ManyToOne(optional = false)
     private Supplier supplieridSupplier;
+    @JoinColumn(name = "Reference_idReference", referencedColumnName = "idReference")
+    @ManyToOne(optional = false)
+    private Reference referenceidReference;
 
     public Stock() {
     }
@@ -63,6 +66,14 @@ public class Stock implements Serializable {
         this.supplieridSupplier = supplieridSupplier;
     }
 
+    public Reference getReferenceidReference() {
+        return referenceidReference;
+    }
+
+    public void setReferenceidReference(Reference referenceidReference) {
+        this.referenceidReference = referenceidReference;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -85,7 +96,7 @@ public class Stock implements Serializable {
 
     @Override
     public String toString() {
-        return "test.Stock[ idStock=" + idStock + " ]";
+        return "Entity.Stock[ idStock=" + idStock + " ]";
     }
     
 }

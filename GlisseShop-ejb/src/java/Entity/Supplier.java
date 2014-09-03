@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package test;
+package Entity;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -39,6 +39,8 @@ public class Supplier implements Serializable {
     @Column(name = "idSupplier")
     private Integer idSupplier;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "supplieridSupplier")
+    private Collection<ShipmentFee> shipmentFeeCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "supplieridSupplier")
     private Collection<Stock> stockCollection;
 
     public Supplier() {
@@ -54,6 +56,15 @@ public class Supplier implements Serializable {
 
     public void setIdSupplier(Integer idSupplier) {
         this.idSupplier = idSupplier;
+    }
+
+    @XmlTransient
+    public Collection<ShipmentFee> getShipmentFeeCollection() {
+        return shipmentFeeCollection;
+    }
+
+    public void setShipmentFeeCollection(Collection<ShipmentFee> shipmentFeeCollection) {
+        this.shipmentFeeCollection = shipmentFeeCollection;
     }
 
     @XmlTransient
@@ -87,7 +98,7 @@ public class Supplier implements Serializable {
 
     @Override
     public String toString() {
-        return "test.Supplier[ idSupplier=" + idSupplier + " ]";
+        return "Entity.Supplier[ idSupplier=" + idSupplier + " ]";
     }
     
 }

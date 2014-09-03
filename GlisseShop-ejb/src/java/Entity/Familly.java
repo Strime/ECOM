@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package test;
+package Entity;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -100,7 +100,7 @@ public class Familly implements Serializable {
 
     @Override
     public String toString() {
-        return "test.Familly[ idFamilly=" + idFamilly + " ]";
+        return "Entity.Familly[ idFamilly=" + idFamilly + " ]";
     }
     
 }

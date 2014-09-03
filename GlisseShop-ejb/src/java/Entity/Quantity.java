@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package test;
+package Entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -90,7 +90,7 @@ public class Quantity implements Serializable {
 
     @Override
     public String toString() {
-        return "test.Quantity[ idQuantity=" + idQuantity + " ]";
+        return "Entity.Quantity[ idQuantity=" + idQuantity + " ]";
     }
     
 }

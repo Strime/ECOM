@@ -4,18 +4,22 @@
  * and open the template in the editor.
  */
 
-package test;
+package Entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,6 +38,8 @@ public class Carac implements Serializable {
     @NotNull
     @Column(name = "idCarac")
     private Integer idCarac;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "caracidCarac")
+    private Collection<Reference> referenceCollection;
 
     public Carac() {
     }
@@ -48,6 +54,15 @@ public class Carac implements Serializable {
 
     public void setIdCarac(Integer idCarac) {
         this.idCarac = idCarac;
+    }
+
+    @XmlTransient
+    public Collection<Reference> getReferenceCollection() {
+        return referenceCollection;
+    }
+
+    public void setReferenceCollection(Collection<Reference> referenceCollection) {
+        this.referenceCollection = referenceCollection;
     }
 
     @Override
@@ -72,7 +87,7 @@ public class Carac implements Serializable {
 
     @Override
     public String toString() {
-        return "test.Carac[ idCarac=" + idCarac + " ]";
+        return "Entity.Carac[ idCarac=" + idCarac + " ]";
     }
     
 }

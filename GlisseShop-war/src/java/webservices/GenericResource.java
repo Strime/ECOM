@@ -6,14 +6,17 @@
 
 package webservices;
 
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.PathParam;
+import DAL.DALFamily;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
-import javax.ws.rs.GET;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.UriInfo;
 
 /**
  * REST Web Service
@@ -34,14 +37,16 @@ public class GenericResource {
 
     /**
      * Retrieves representation of an instance of webservices.GenericResource
+     * @param id
      * @return an instance of java.lang.String
      */
-    @GET
+    @POST
     @Produces("application/json")
+    @Consumes("application/json")
     @Path("getJson")
-    public String getJSON() {
+    public String getJSON(@QueryParam(value = "id") Integer id) {
         //TODO return proper representation object
-        return "plop";
+        return (new DALFamily()).getFamily(id).toString();
     }
     
     @GET
